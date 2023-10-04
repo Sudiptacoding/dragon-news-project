@@ -5,7 +5,9 @@ const About = () => {
     return (
         <div>
             <Header></Header>
-            <h1>i am about</h1>
+            <div className='flex items-center justify-center w-full h-[50vh]'>
+                <p className='text-3xl'>About Page Comming soon....</p>
+            </div>
         </div>
     );
 };

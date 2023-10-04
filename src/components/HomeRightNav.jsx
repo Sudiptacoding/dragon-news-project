@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
@@ -7,8 +7,14 @@ import { EffectCards } from 'swiper/modules';
 import '../App.css'
 import { UserContext } from '../context/UserContextProvider';
 import toast from 'react-hot-toast';
+import ReactPlayer from 'react-player';
+
 
 const HomeRightNav = () => {
+    const [addData, setAddData] = useState(null)
+
+    const [add, setAdd] = useState(true)
+    const [vedio, setVedio] = useState(true)
 
     const { handelGoogle, handelGithub } = useContext(UserContext)
 
@@ -31,6 +37,15 @@ const HomeRightNav = () => {
     }
 
 
+    useEffect(() => {
+        fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+            .then(res => res.json())
+            .then(data => {
+                setAddData(data)
+            })
+    }, []);
+
+
 
     return (
         <div className=''>
@@ -38,7 +53,7 @@ const HomeRightNav = () => {
             <div class="grid space-y-2">
                 <button onClick={handelGoogleLogin} class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
                     <div class="relative flex items-center space-x-4 justify-center">
-                        <img src="https://tailus.io/sources/blocks/social/preview/images/google.svg" class="absolute left-0 w-5" alt="google logo" />
+                        <img src="https://tailus.io/sources/blocks/social/preview/images/google.svg" className="absolute left-0 w-5" alt="google logo" />
                         <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">Login with Google</span>
                     </div>
                 </button>
@@ -133,6 +148,42 @@ const HomeRightNav = () => {
                     </Swiper>
                 </div>
             </div>
+
+
+            {/* Add section */}
+            {
+                add && <div className='relative py-6'>
+                    <div className="relative grid h-[40rem] w-full  flex-col items-end justify-center overflow-hidden rounded-xl bg-white bg-clip-border text-center text-gray-700">
+                        <div style={{ backgroundImage: "url(" + addData?.meals[0].strMealThumb + ")" }} className={` absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-cover bg-clip-border bg-center text-gray-700 shadow-none`}>
+                            <div className="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50"></div>
+                        </div>
+                        <div className="relative p-6 px-6 py-14 md:px-12">
+                            <h2 className="mb-6 block font-sans text-4xl font-medium leading-[1.5] tracking-normal text-white antialiased">
+                                How to cook and make {addData?.meals[0].strMeal}
+                            </h2>
+                            <h5 className="block mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-400">
+                                {addData?.meals[0].strCategory}
+                            </h5>
+                            <img
+                                alt="tania andrew"
+                                src={addData?.meals[0].strMealThumb}
+                                className="relative inline-block h-[74px] w-[74px] rounded-full border-2 border-white object-cover object-center"
+                            />
+                        </div>
+                        <span onClick={() => setAdd(!add)} className='absolute top-0 text-2xl text-white right-4'><p className='cursor-pointer'>x</p></span>
+                    </div>
+                </div>
+            }
+
+            {
+                vedio && <div className='relative pb-3'>
+                    <ReactPlayer className='react-player rounded-xl'
+                        width='100%'
+                        height='300px'
+                        url={` ${addData?.meals[0].strYoutube || 'https://www.youtube.com/watch?v=ixpCabILuxw'} `} />
+                    <span onClick={() => setVedio(!vedio)} className='absolute top-0 text-2xl text-white right-4'><p className='cursor-pointer'>x</p></span>
+                </div>
+            }
 
 
 

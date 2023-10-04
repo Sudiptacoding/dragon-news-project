@@ -126,7 +126,7 @@ const Header = () => {
                                     <img src={currentUser.photoURL || firstShow} />
                                 </div>
                             </label>
-                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu  menu-sm dropdown-content bg-white rounded-box absolute -left-64 right-0 lg:w-80 w-80 ">
+                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu  menu-sm dropdown-content bg-white rounded-box absolute -left-64 right-0 lg:w-[400px] w-80 ">
                                 <li class="py-3 sm:py-4">
                                     <div class="flex items-center lg:space-x-3">
                                         <div class="flex-shrink-0">

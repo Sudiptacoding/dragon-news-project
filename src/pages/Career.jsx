@@ -5,7 +5,9 @@ const Career = () => {
     return (
         <div>
             <Header></Header>
-            <h1>Career page</h1>
+            <div className='flex items-center justify-center w-full h-[50vh]'>
+                <p className='text-3xl'>Career Page Comming soon....</p>
+            </div>
         </div>
     );
 };

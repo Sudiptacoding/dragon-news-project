@@ -26,7 +26,6 @@ const Home = () => {
             })
     }, [selectCategory])
 
-
     const handelAddBookMark = (item) => {
         const localData = getData()
         const findData = localData.find(id => id === item._id)
@@ -51,11 +50,6 @@ const Home = () => {
                 setBookMark(myArray)
             })
     }, [])
-
-
-
-
-
     return (
         <div>
             <LogoHeader></LogoHeader>
@@ -64,7 +58,7 @@ const Home = () => {
             {/* Layout */}
             <div className='grid grid-cols-1 gap-3 mt-10 lg:grid-cols-4'>
                 <div><HomeLeftNav></HomeLeftNav></div>
-                <div className='lg:col-span-2 overflow-y-auto h-[1500px] no-scrollbar'>
+                <div className='lg:col-span-2 overflow-y-auto lg:h-[2280px] h-screen no-scrollbar'>
                     <div className='pb-5'><h1 className='text-[#403F3F] text-xl font-semibold'>Dragon News Home</h1></div>
                     <div>
                         {
