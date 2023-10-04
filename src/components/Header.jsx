@@ -126,14 +126,14 @@ const Header = () => {
                                     <img src={currentUser.photoURL || firstShow} />
                                 </div>
                             </label>
-                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu  menu-sm dropdown-content bg-white rounded-box absolute -left-64 right-0 lg:w-[400px] w-80 ">
+                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu  menu-sm dropdown-content bg-white rounded-box absolute -left-[170px]  lg:-left-[233px]  lg:w-[400px] w-[300px]">
                                 <li class="py-3 sm:py-4">
-                                    <div class="flex items-center lg:space-x-3">
+                                    <div class="flex items-center lg:space-x-3 flex-col lg:flex-row">
                                         <div class="flex-shrink-0">
                                             <img class="w-8 h-8 rounded-full" src={currentUser.photoURL || firstShow} alt="Neil image" />
                                         </div>
                                         <div class="flex-1 min-w-0">
-                                            <p class="text-sm font-semibold text-gray-900 truncate dark:text-white">
+                                            <p class="text-sm font-semibold text-gray-900 truncate dark:text-white text-center lg:text-left">
                                                 {currentUser.displayName}
                                             </p>
                                             <p class="text-sm text-gray-500 truncate dark:text-gray-400">
